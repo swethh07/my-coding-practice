@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | Campus Events</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header class="navbar">
+  <a class="logo" href="index.html">🎓 Campus <span>Events</span></a>
+  <nav>
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a class="active" href="events.html">Events</a>
+    <a href="schedule.html">Schedule</a><a href="register.html">Register</a>
+  </nav>
+</header>
+<main>
+  <section class="page-hero">
+    <p class="eyebrow">FIND YOUR NEXT EXPERIENCE</p>
+    <h1>All Events</h1>
+    <p>Explore upcoming events and be part of exciting experiences.</p>
+    <input id="search" class="search" type="search" placeholder="🔍 Search events..." aria-label="Search events">
+  </section>
+  <section class="section">
+    <div class="cards" id="event-list">
+      <article class="event-card searchable">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80" alt="Technology event">
+        <div class="card-body"><span class="tag blue">Technical</span><h3>Tech Fest 2026</h3><p class="meta">Oct 15, 2026 · Auditorium</p><p>Explore innovation, coding and technology.</p><a class="btn small" href="event-details.html?event=tech">View Details →</a></div>
+      </article>
+      <article class="event-card searchable">
+        <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80" alt="Dance performance">
+        <div class="card-body"><span class="tag red">Cultural</span><h3>Cultural Day</h3><p class="meta">Oct 20, 2026 · Main Hall</p><p>Celebrate music, dance and creativity.</p><a class="btn small" href="event-details.html?event=cultural">View Details →</a></div>
+      </article>
+      <article class="event-card searchable">
+        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80" alt="Sports meet">
+        <div class="card-body"><span class="tag green">Sports</span><h3>Inter-College Sports Meet</h3><p class="meta">Oct 28, 2026 · Sports Ground</p><p>Compete and showcase your sports skills.</p><a class="btn small" href="event-details.html?event=sports">View Details →</a></div>
+      </article>
+      <article class="event-card searchable">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Workshop">
+        <div class="card-body"><span class="tag blue">Workshop</span><h3>AI Workshop</h3><p class="meta">Nov 05, 2026 · Seminar Hall</p><p>Learn about AI tools and real-world applications.</p><a class="btn small" href="event-details.html?event=ai">View Details →</a></div>
+      </article>
+      <article class="event-card searchable">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=80" alt="Photography camera">
+        <div class="card-body"><span class="tag red">Cultural</span><h3>Photography Contest</h3><p class="meta">Nov 12, 2026 · Open Grounds</p><p>Capture moments and showcase your creativity.</p><a class="btn small" href="event-details.html?event=photo">View Details →</a></div>
+      </article>
+      <article class="event-card searchable">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80" alt="Career discussion">
+        <div class="card-body"><span class="tag blue">Technical</span><h3>Career Guidance Talk</h3><p class="meta">Nov 18, 2026 · Auditorium</p><p>Get career advice from industry experts.</p><a class="btn small" href="event-details.html?event=career">View Details →</a></div>
+      </article>
+    </div>
+    <p id="no-results" hidden>No matching events found. Try another search.</p>
+  </section>
+</main>
+<footer class="footer"><a class="logo light" href="index.html">🎓 Campus Events</a><p>Bringing students together through learning and creativity.</p><p>© 2026 Campus Events. All rights reserved.</p></footer>
+</body>
+</html>
