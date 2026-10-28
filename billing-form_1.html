@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billing Address Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* 1. Page: diagonal-free green to blue gradient behind everything */
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    min-height: 100vh;
+    display: flex; flex-wrap: wrap; gap: 40px;      /* two cards side by side, wrap on phones */
+    align-items: center; justify-content: center;
+    padding: 40px 20px;
+    font-family: "Roboto", Arial, sans-serif;
+    background: linear-gradient(90deg, #3a8a78 0%, #1e6272 50%, #07487a 100%);
+  }
+
+  /* 2. Shared card shape (both versions use this) */
+  .card {
+    width: 300px; padding: 22px 18px 24px;
+    border-radius: 38px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .card h2 { text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+
+  /* 3. Shared fields: pill shape = border-radius bigger than half the height */
+  .field { position: relative; }
+  .field input, .field select, textarea {
+    width: 100%; border: 0; outline: 0;
+    font: inherit; font-size: 17px; color: inherit;
+    background: var(--field-bg);
+  }
+  .field input { height: 50px; padding: 0 50px 0 22px; border-radius: 25px; }
+  .field svg {                                       /* icon sits inside the right end */
+    position: absolute; right: 18px; top: 50%;
+    width: 22px; height: 22px; transform: translateY(-50%);
+    fill: var(--icon);
+  }
+  ::placeholder { color: var(--placeholder); opacity: 1; }
+
+  /* Country + City on one row */
+  .row { display: flex; justify-content: space-between; gap: 12px; }
+  .select { position: relative; flex: 1; }
+  .select select {
+    height: 50px; padding: 0 28px 0 18px; border-radius: 25px;
+    appearance: none; -webkit-appearance: none; color: var(--placeholder);
+  }
+  .select::after {                                   /* the little arrow */
+    content: "▼"; font-size: 10px; color: var(--icon);
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  textarea { height: 115px; padding: 14px 16px; border-radius: 22px; resize: none; font-size: 15px; }
+
+  .agree { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--placeholder); }
+  .agree input { width: 16px; height: 16px; accent-color: #8a9; }
+
+  button {
+    height: 52px; border-radius: 26px; border: 0; cursor: pointer;
+    font: inherit; font-size: 21px; font-weight: 700;
+  }
+  button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid #fff; outline-offset: 2px;
+  }
+
+  /* 4. GLASS version: see-through white + blur of what is behind */
+  .glass {
+    --field-bg: rgba(255,255,255,.18);
+    --placeholder: rgba(255,255,255,.75);
+    --icon: rgba(255,255,255,.8);
+    color: #e9f3f1;
+    background: rgba(255,255,255,.14);               /* low alpha = see-through */
+    border: 1px solid rgba(255,255,255,.4);          /* thin light edge */
+    backdrop-filter: blur(14px);                     /* the "frosted" effect */
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .glass button { background: rgba(255,255,255,.2); color: #e9f3f1; border: 1px solid rgba(255,255,255,.4); }
+
+  /* 5. LIGHT version: solid grey-white + gradient button */
+  .light {
+    --field-bg: #e4e4e4;
+    --placeholder: #8a8a8a;
+    --icon: #8a8a8a;
+    color: #222;
+    background: #f3f3f3;
+  }
+  .light button { background: linear-gradient(90deg, #2f7f71, #0b4c78); color: #fff; }
+</style>
+</head>
+<body>
+
+  <!-- Left card: glass -->
+  <form class="card glass" onsubmit="return false">
+    <h2>Billing Address</h2>
+    <div class="field">
+      <input type="text" placeholder="Name" aria-label="Name">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4.5"/><path d="M3 21c0-5 4-8 9-8s9 3 9 8z"/></svg>
+    </div>
+    <div class="field">
+      <input type="email" placeholder="Email Address" aria-label="Email Address">
+      <svg viewBox="0 0 24 24"><path d="M2 5h20v14H2z" opacity=".0"/><path d="M2 5.5C2 4.7 2.7 4 3.5 4h17c.8 0 1.5.7 1.5 1.5v.3L12 12.5 2 5.8zM2 8.2l10 6.7 10-6.7v10.3c0 .8-.7 1.5-1.5 1.5h-17c-.8 0-1.5-.7-1.5-1.5z"/></svg>
+    </div>
+    <div class="field">
+      <input type="tel" placeholder="Phone Number" aria-label="Phone Number">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.500.6 3.600.1.3 0 .7-.2 1z"/></svg>
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Security Code" aria-label="Security Code">
+      <svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.400 9.300-8 11-4.600-1.700-8-6-8-11V5z"/></svg>
+    </div>
+    <div class="row">
+      <div class="select"><select aria-label="Country"><option>Country</option><option>India</option><option>USA</option></select></div>
+      <div class="select"><select aria-label="City"><option>Choose City</option><option>Chennai</option><option>Mumbai</option></select></div>
+    </div>
+    <textarea placeholder="Write your Full Address..." aria-label="Full Address"></textarea>
+    <label class="agree"><input type="checkbox" checked> Agree with Billing Policy</label>
+    <button type="submit">Save &amp; Continue</button>
+  </form>
+
+  <!-- Right card: light (same HTML, only the class changes) -->
+  <form class="card light" onsubmit="return false">
+    <h2>Billing Address</h2>
+    <div class="field">
+      <input type="text" placeholder="Name" aria-label="Name">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4.5"/><path d="M3 21c0-5 4-8 9-8s9 3 9 8z"/></svg>
+    </div>
+    <div class="field">
+      <input type="email" placeholder="Email Address" aria-label="Email Address">
+      <svg viewBox="0 0 24 24"><path d="M2 5.5C2 4.7 2.7 4 3.5 4h17c.8 0 1.5.7 1.5 1.5v.3L12 12.5 2 5.8zM2 8.2l10 6.7 10-6.7v10.3c0 .8-.7 1.5-1.5 1.5h-17c-.8 0-1.5-.7-1.5-1.5z"/></svg>
+    </div>
+    <div class="field">
+      <input type="tel" placeholder="Phone Number" aria-label="Phone Number">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.500.6 3.600.1.3 0 .7-.2 1z"/></svg>
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Security Code" aria-label="Security Code">
+      <svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.400 9.300-8 11-4.600-1.700-8-6-8-11V5z"/></svg>
+    </div>
+    <div class="row">
+      <div class="select"><select aria-label="Country"><option>Country</option><option>India</option><option>USA</option></select></div>
+      <div class="select"><select aria-label="City"><option>Choose City</option><option>Chennai</option><option>Mumbai</option></select></div>
+    </div>
+    <textarea placeholder="Write your Full Address..." aria-label="Full Address"></textarea>
+    <label class="agree"><input type="checkbox" checked> Agree with Billing Policy</label>
+    <button type="submit">Save &amp; Continue</button>
+  </form>
+
+</body>
+</html>
